@@ -46,5 +46,20 @@
   height: 100%;
 }
 
+.date-filter-wrapper {
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+.date-filter-wrapper input {
+  padding: 10px 50px;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 16px;
+  width: 100%;
+  height: 100%;
+}
+
 .genre-list-wrapper {
 }
