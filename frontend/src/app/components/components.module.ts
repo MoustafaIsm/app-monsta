@@ -3,18 +3,20 @@ import { CommonModule } from '@angular/common';
 
 // Components
 import { GenreCardComponent } from './genre-card/genre-card.component';
+import { AppCardComponent } from './app-card/app-card.component';
 
 
 @NgModule({
   declarations: [
-    GenreCardComponent
-
+    GenreCardComponent,
+    AppCardComponent
   ],
   imports: [
     CommonModule,
   ],
   exports: [
-    GenreCardComponent
+    GenreCardComponent,
+    AppCardComponent
   ]
 })
 export class ComponentsModule { }
