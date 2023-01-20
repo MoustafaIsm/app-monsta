@@ -9,3 +9,11 @@
   padding: 0;
   font-family: "regular-roboto";
 }
+
+.section-wrapper {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
