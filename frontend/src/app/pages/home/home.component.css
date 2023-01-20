@@ -15,5 +15,21 @@
   border-radius: 5px;
 }
 
+.store-filter-wrapper {
+  display: flex;
+}
+
+.android-filter-wrapper {
+  padding: 10px 50px;
+  border: 1px solid #000;
+  border-radius: 5px 0px 0px 5px;
+}
+
+.ios-filter-wrapper {
+  padding: 10px 50px;
+  border: 1px solid #000;
+  border-radius: 0px 5px 5px 0px;
+}
+
 .genre-list-wrapper {
 }
