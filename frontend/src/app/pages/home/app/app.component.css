@@ -23,8 +23,50 @@
   gap: 10px;
 }
 
-.other-info-wrapper > p {
+.other-info-wrapper > * {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.discription-wrapper {
+  margin: 10px 0px;
+}
+
+.discription-wrapper span {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 800;
+}
+
+.screenshots-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.images-wrapper {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0px 10px;
+}
+
+.images-wrapper > img {
+  width: 33.33%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 480px) {
+  .app-info-wrapper {
+    flex-direction: column;
+  }
+
+  .app-info-wrapper > div:first-child {
+    width: 100%;
+  }
 }
