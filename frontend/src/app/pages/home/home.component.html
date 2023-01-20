@@ -12,18 +12,19 @@
         </div>
         <!-- Countries drop down list -->
         <div class="country-filter-wrapper">
-            <select>
+            <select (change)="changeCity($event)">
+                <option value="" disabled selected hidden>Choose country...</option>
                 <!-- TODO: get the list on countries from https://restcountries.com/v3.1/all -->
-                <option value="1">USA</option>
-                <option value="2">UK</option>
-                <option value="3">Canada</option>
-                <option value="4">Australia</option>
-                <option value="5">New Zealand</option>
+                <option value="USA">USA</option>
+                <option value="UK">UK</option>
+                <option value="Canada">Canada</option>
+                <option value="Australia">Australia</option>
+                <option value="New Zealand">New Zealand</option>
             </select>
         </div>
         <!-- Date picker -->
         <div class="date-filter-wrapper">
-            <input type="date" name="date" id="date">
+            <input type="date" name="date" id="date" (change)="changeDate($event)" [ngModel]="date">
         </div>
     </div>
     <!-- List of genres -->
