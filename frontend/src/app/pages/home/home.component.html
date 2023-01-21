@@ -4,17 +4,17 @@
         <!-- Store -->
         <div class="store-filter-wrapper">
             <div class="android-filter-wrapper store-filter" [ngClass]="store === 'android' ? 'active' : ''"
-                (click)="changeStore('android')">
+                (click)="changeData('store', $event, 'android')">
                 <fa-icon [icon]="faAndroid"></fa-icon>
             </div>
             <div class="ios-filter-wrapper store-filter" [ngClass]="store === 'itunes' ? 'active' : ''"
-                (click)="changeStore('itunes')">
+                (click)="changeData('store', $event, 'itunes')">
                 <fa-icon [icon]="faAppStoreIos"></fa-icon>
             </div>
         </div>
         <!-- Countries drop down list -->
         <div class="country-filter-wrapper">
-            <select (change)="changeCity($event)">
+            <select (change)="changeData('country', $event)">
                 <option value="US" disabled selected hidden>United States</option>
                 <option *ngFor="let country of allCountries" [value]="country.altSpellings[0]">{{country.name.common}}
                 </option>
@@ -22,7 +22,7 @@
         </div>
         <!-- Date picker -->
         <div class="date-filter-wrapper">
-            <input type="date" name="date" id="date" (change)="changeDate($event)" [ngModel]="date">
+            <input type="date" name="date" id="date" (change)="changeData('date', $event)" [ngModel]="date">
         </div>
     </div>
     <!-- List of genres -->

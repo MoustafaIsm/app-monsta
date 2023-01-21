@@ -26,16 +26,19 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  changeCity(event: any) {
-    this.country = event.target.value;
-  }
-
-  changeDate(event: any) {
-    this.date = event.target.value;
-  }
-
-  changeStore(type: string) {
-    this.store = type;
+  changeData(typeOfData: string, event: any, store?: string) {
+    switch (typeOfData) {
+      case 'country':
+        this.country = event.target.value;
+        break;
+      case 'date':
+        this.date = event.target.value;
+        break;
+      case 'store':
+        if (store)
+          this.store = store;
+        break;
+    }
   }
 
 }
