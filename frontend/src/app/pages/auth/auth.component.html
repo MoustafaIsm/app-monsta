@@ -1,1 +1,28 @@
-<p>auth works!</p>
+<section class="section-wrapper">
+    <!-- Login form -->
+    <div class="login-form">
+        <div class="login-form-header">
+            <h1>Login</h1>
+        </div>
+        <div class="login-form-body">
+            <form>
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email" [formControl]="email">
+                </div>
+                <!-- Password -->
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password"
+                        [formControl]="password">
+                </div>
+                <!-- Login button -->
+                <button type="submit" class="btn">Login</button>
+
+            </form>
+        </div>
+    </div>
+
+
+</section>
