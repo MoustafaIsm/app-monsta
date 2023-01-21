@@ -15,8 +15,9 @@
         <!-- Countries drop down list -->
         <div class="country-filter-wrapper">
             <select (change)="changeCity($event)">
-                <option value="" disabled selected hidden>Choose country...</option>
-                <option *ngFor="let country of allCountries" [value]="country">{{country}}</option>
+                <option value="US" disabled selected hidden>United States</option>
+                <option *ngFor="let country of allCountries" [value]="country.altSpellings[0]">{{country.name.common}}
+                </option>
             </select>
         </div>
         <!-- Date picker -->

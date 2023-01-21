@@ -10,19 +10,18 @@ import { CountriesService } from '../../services/countries/countries.service';
 export class HomeComponent implements OnInit {
   faAndroid = faAndroid;
   faAppStoreIos = faAppStoreIos;
-  allCountries: string[] = [];
+  allCountries: any[] = [];
   store: string = 'android';
-  country: string = '';
+  country: string = 'US';
   date: string = new Date().toISOString().slice(0, 10);
 
   constructor(private countriesService: CountriesService) { }
 
   ngOnInit() {
-    console.log('Here');
     this.countriesService.getCountries().subscribe((data: any) => {
       // Extract the alternate names for each country
       data.forEach((country: any) => {
-        this.allCountries.push(country.altSpellings[0]);
+        this.allCountries.push(country);
       });
     });
   }
@@ -37,7 +36,6 @@ export class HomeComponent implements OnInit {
 
   changeStore(type: string) {
     this.store = type;
-    console.log(this.store);
   }
 
 }
