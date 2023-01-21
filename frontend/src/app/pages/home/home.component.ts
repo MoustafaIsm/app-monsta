@@ -9,6 +9,7 @@ import { faAndroid, faAppStoreIos } from '@fortawesome/free-brands-svg-icons';
 export class HomeComponent {
   faAndroid = faAndroid;
   faAppStoreIos = faAppStoreIos;
+  store: string = 'android';
   country: string = '';
   date: string = new Date().toISOString().slice(0, 10);
 
@@ -20,7 +21,11 @@ export class HomeComponent {
 
   changeDate(event: any) {
     this.date = event.target.value;
-    console.log(this.date);
+  }
+
+  changeStore(type: string) {
+    this.store = type;
+    console.log(this.store);
   }
 
 }

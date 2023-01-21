@@ -24,6 +24,15 @@
   border-radius: 0px 5px 5px 0px;
 }
 
+.store-filter:hover {
+  cursor: pointer;
+  background-color: #cacccf;
+}
+
+.active {
+  background-color: #cacccf;
+}
+
 .country-filter-wrapper {
   border: 1px solid #000;
   border-radius: 5px;

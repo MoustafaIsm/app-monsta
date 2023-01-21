@@ -3,10 +3,12 @@
     <div class="filters-wrapper">
         <!-- Store -->
         <div class="store-filter-wrapper">
-            <div class="android-filter-wrapper">
+            <div class="android-filter-wrapper store-filter" [ngClass]="store === 'android' ? 'active' : ''"
+                (click)="changeStore('android')">
                 <fa-icon [icon]="faAndroid"></fa-icon>
             </div>
-            <div class="ios-filter-wrapper">
+            <div class="ios-filter-wrapper store-filter" [ngClass]="store === 'itunes' ? 'active' : ''"
+                (click)="changeStore('itunes')">
                 <fa-icon [icon]="faAppStoreIos"></fa-icon>
             </div>
         </div>
