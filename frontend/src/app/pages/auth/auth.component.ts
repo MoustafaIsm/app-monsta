@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-auth',
@@ -7,8 +7,10 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent {
-  email = new FormControl('', [Validators.required, Validators.email]);
-  password = new FormControl('', [Validators.required, Validators.minLength(6)]);
+  authForm = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)])
+  });
   constructor() { }
 
 }
