@@ -31,17 +31,11 @@ export class AppCardComponent implements OnInit {
       error: (err: any) => {
         if (err.status === 200) {
           const data = convertStringToArray(err.error?.text);
-          let placeholder = 'Unknown publisher'
           data.forEach((item: any) => {
             if (item.id === publisherId) {
               this.app.publisher_name = item.name;
-              placeholder = '';
             }
           });
-          if (placeholder !== '') {
-            this.app.publisher_name = placeholder;
-          }
-
         } else {
           console.log(err);
         }
