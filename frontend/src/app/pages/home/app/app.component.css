@@ -1,6 +1,7 @@
 .app-info-wrapper {
   display: flex;
   gap: 10px;
+  max-height: 300px;
 }
 
 .app-info-wrapper > div:first-child {
@@ -49,8 +50,9 @@
   display: flex;
   gap: 10px;
   overflow-x: auto;
-  overflow-y: hidden;
+  overflow-y: fit;
   padding: 0px 10px;
+  height: 100%;
 }
 
 .images-wrapper > img {

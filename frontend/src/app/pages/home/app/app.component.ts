@@ -15,7 +15,6 @@ export class AppComponent {
       next: (data: any) => {
         if (this.router.getCurrentNavigation()?.extras.state) {
           this.app = this.router.getCurrentNavigation()?.extras.state?.['app'];
-          console.log(this.app);
         }
       }
     });
