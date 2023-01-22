@@ -1,0 +1,37 @@
+<section class="section-wrapper">
+    <!-- Filters -->
+    <div class="filters-wrapper">
+        <!-- Store -->
+        <div class="store-filter-wrapper">
+            <div class="android-filter-wrapper store-filter" [ngClass]="store === 'android' ? 'active' : ''"
+                (click)="changeData('store', $event, 'android')">
+                <fa-icon [icon]="faAndroid"></fa-icon>
+            </div>
+            <div class="ios-filter-wrapper store-filter" [ngClass]="store === 'itunes' ? 'active' : ''"
+                (click)="changeData('store', $event, 'itunes')">
+                <fa-icon [icon]="faAppStoreIos"></fa-icon>
+            </div>
+        </div>
+        <!-- Countries drop down list -->
+        <div class="country-filter-wrapper">
+            <select (change)="changeData('country', $event)">
+                <option value="US" disabled selected hidden>United States</option>
+                <option *ngFor="let country of allCountries" [value]="country.altSpellings[0]">{{country.name.common}}
+                </option>
+            </select>
+        </div>
+        <!-- Date picker -->
+        <div class="date-filter-wrapper">
+            <input type="date" name="date" id="date" (change)="changeData('date', $event)" [ngModel]="date">
+        </div>
+    </div>
+    <!-- List of genres -->
+    <div class="genre-grid-wrapper" *ngIf="genres.length > 0; else elseBlock">
+        <app-genre-card *ngFor="let genre of genres" [genre]="genre" [store]="store" [date]="date"></app-genre-card>
+    </div>
+    <ng-template #elseBlock>
+        <div class="loading-wrapper">
+            <fa-icon [icon]="faSpinner" [spin]="true"></fa-icon>
+        </div>
+    </ng-template>
+</section>

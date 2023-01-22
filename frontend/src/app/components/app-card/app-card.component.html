@@ -1,0 +1,19 @@
+<div class="card-wrapper" (click)="openAppDetails()">
+    <!-- Image -->
+    <div class="card-image-wrapper">
+        <img [src]="app.screenshot_urls[0]" alt="App Image">
+    </div>
+    <!-- Name -->
+    <div class="card-name-wrapper">
+        <h3>{{app.app_name}}</h3>
+    </div>
+    <!-- Publisher name -->
+    <div class="card-publisher-wrapper">
+        <p>{{app.publisher_name}}</p>
+    </div>
+    <!-- Rating -->
+    <!-- TODO: Make the rating a star rating -->
+    <div class="card-rating-wrapper">
+        <p>{{app.all_rating}}</p>
+    </div>
+</div>

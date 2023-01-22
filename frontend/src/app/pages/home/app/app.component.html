@@ -1,0 +1,31 @@
+<section class="section-wrapper">
+    <!-- App info -->
+    <div class="app-info-wrapper">
+        <!-- Image -->
+        <div>
+            <img [src]="app.screenshot_urls[0]">
+        </div>
+        <!-- Other info -->
+        <div class="other-info-wrapper">
+            <h3>{{app.app_name}}</h3>
+            <h3>{{app.publisher_name}}</h3>
+            <h3>Rating {{app.all_rating}}</h3>
+            <h3>{{app.genres}}</h3>
+        </div>
+    </div>
+    <!-- Discription -->
+    <div class="discription-wrapper">
+        <p>
+            <span>Discription: </span> {{app.description}}}
+        </p>
+    </div>
+    <!-- Screenshots -->
+    <div class="screenshots-wrapper">
+        <h3>Screenshots</h3>
+        <div class="images-wrapper">
+            <img *ngFor="let sc of app.screenshot_urls" [src]="sc" alt="screenshot">
+        </div>
+    </div>
+
+
+</section>

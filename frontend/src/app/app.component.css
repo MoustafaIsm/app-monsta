@@ -1,0 +1,18 @@
+.header-wrapper {
+  width: 100%;
+  height: 80px;
+  background-color: #cacccf;
+}
+
+.header-wrapper > nav {
+  height: 100%;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-wrapper > nav > p {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
