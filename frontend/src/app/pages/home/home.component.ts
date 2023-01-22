@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { faAndroid, faAppStoreIos } from '@fortawesome/free-brands-svg-icons';
 import { CountriesService } from '../../services/countries/countries.service';
+import { AppMonstaService } from 'src/app/services/appMonsta/app-monsta.service';
+import { convertStringToArray } from '../../../utilities/functions';
 
 @Component({
   selector: 'app-home',
@@ -14,8 +16,9 @@ export class HomeComponent implements OnInit {
   store: string = 'android';
   country: string = 'US';
   date: string = new Date().toISOString().slice(0, 10);
+  genres: any[] = [];
 
-  constructor(private countriesService: CountriesService) { }
+  constructor(private countriesService: CountriesService, private appMonstaService: AppMonstaService) { }
 
   ngOnInit() {
     this.countriesService.getCountries().subscribe((data: any) => {
@@ -39,6 +42,29 @@ export class HomeComponent implements OnInit {
           this.store = store;
         break;
     }
+    this.getGenres();
+  }
+
+  getGenres() {
+    // App monsta returns the data as string( at least for the timesi  tested it)
+    // This API call will fail due to error in parsing to JSON
+    // It will be handled in the error part when the status code is 200
+    this.appMonstaService.getGenres(this.store, this.country, this.date)
+      .subscribe({
+        next: (data: any) => {
+          console.log(data);
+        },
+        error: (error: any) => {
+          // Check status code
+          if (error.status === 200) {
+            // Convert the string to array
+            this.genres = convertStringToArray(error.error?.text);
+          } else {
+            console.log(error);
+          }
+        }
+      });
+
   }
 
 }
