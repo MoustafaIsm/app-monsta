@@ -13,9 +13,9 @@ export class HomeComponent implements OnInit {
   faAndroid = faAndroid;
   faAppStoreIos = faAppStoreIos;
   allCountries: any[] = [];
-  store: string = 'android';
+  store: string = 'itunes';
   country: string = 'US';
-  date: string = new Date().toISOString().slice(0, 10);
+  date: string = new Date('2023-1-20').toISOString().slice(0, 10);
   genres: any[] = [];
 
   constructor(private countriesService: CountriesService, private appMonstaService: AppMonstaService) { }
@@ -27,6 +27,8 @@ export class HomeComponent implements OnInit {
         this.allCountries.push(country);
       });
     });
+
+    this.getGenres();
   }
 
   changeData(typeOfData: string, event: any, store?: string) {
@@ -49,19 +51,13 @@ export class HomeComponent implements OnInit {
     // App monsta returns the data as string( at least for the timesi  tested it)
     // This API call will fail due to error in parsing to JSON
     // It will be handled in the error part when the status code is 200
-    this.appMonstaService.getGenres(this.store, this.country, this.date)
+    this.appMonstaService.getSpecificGenreNames(this.store, this.date)
       .subscribe({
         next: (data: any) => {
           console.log(data);
         },
         error: (error: any) => {
-          // Check status code
-          if (error.status === 200) {
-            // Convert the string to array
-            this.genres = convertStringToArray(error.error?.text);
-          } else {
-            console.log(error);
-          }
+          console.log(error);
         }
       });
 

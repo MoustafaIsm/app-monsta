@@ -27,14 +27,6 @@
     </div>
     <!-- List of genres -->
     <div class="genre-grid-wrapper">
-        <app-genre-card></app-genre-card>
-        <app-genre-card></app-genre-card>
-        <app-genre-card></app-genre-card>
-        <app-genre-card></app-genre-card>
-        <app-genre-card></app-genre-card>
-        <app-genre-card></app-genre-card>
-        <app-genre-card></app-genre-card>
-        <app-genre-card></app-genre-card>
-        <app-genre-card></app-genre-card>
+        <app-genre-card *ngFor="let genre of genres" [genre]="genre"></app-genre-card>
     </div>
 </section>
