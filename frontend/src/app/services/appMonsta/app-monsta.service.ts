@@ -10,7 +10,7 @@ const httpOptions = {
   })
 };
 
-const URL = 'https://api.appmonsta.com/v1/stores/';
+const URL = 'https://api.appmonsta.com/v1/stores';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +29,7 @@ export class AppMonstaService {
     return result;
   }
 
-  getFirstAppOfGenre(store: string, appId: string, country: string) {
+  getAppDetails(store: string, appId: string, country: string) {
     const result = this.http.get(`${URL}/${store}/details/${appId}.json?country=${country}`, httpOptions);
     return result;
   }

@@ -19,11 +19,11 @@ export class GenreCardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.appMonstaService.getFirstAppOfGenre(this.store, this.genre.ranks[0], 'US').subscribe({
-      next: (data: any) => {
-        this.pictureURL = data.screenshot_urls[0];
-      }
-    });
+    // this.appMonstaService.getAppDetails(this.store, this.genre.ranks[0], this.genre.country).subscribe({
+    //   next: (data: any) => {
+    //     this.pictureURL = data.screenshot_urls[0];
+    //   }
+    // });
   }
 
   goToGenre() {
