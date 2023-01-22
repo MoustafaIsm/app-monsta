@@ -17,6 +17,8 @@ export class HomeComponent implements OnInit {
   country: string = 'US';
   date: string = new Date('2023-1-20').toISOString().slice(0, 10);
   genres: any[] = [];
+  agregatedGenres: any[] = [];
+  spesificGenreNames: any[] = [];
 
   constructor(private countriesService: CountriesService, private appMonstaService: AppMonstaService) { }
 
@@ -51,16 +53,63 @@ export class HomeComponent implements OnInit {
     // App monsta returns the data as string( at least for the timesi  tested it)
     // This API call will fail due to error in parsing to JSON
     // It will be handled in the error part when the status code is 200
-    this.appMonstaService.getSpecificGenreNames(this.store, this.date)
+
+    // Get agregate data for all genres
+    this.appMonstaService.getGenres(this.store, this.country, this.date)
       .subscribe({
         next: (data: any) => {
           console.log(data);
         },
         error: (error: any) => {
-          console.log(error);
+          if (error.status === 200) {
+            this.agregatedGenres = convertStringToArray(error.error?.text);
+            console.log(this.agregatedGenres);
+
+            // Get specific genre names
+            this.appMonstaService.getSpecificGenreNames(this.store, this.date)
+              .subscribe({
+                next: (data: any) => {
+                  console.log(data);
+                },
+                error: (error: any) => {
+                  if (error.status === 200) {
+                    this.spesificGenreNames = convertStringToArray(error.error?.text);
+                    console.log(this.spesificGenreNames);
+                    this.genres = this.manipulateData(this.agregatedGenres, this.spesificGenreNames);
+                    console.log(this.genres);
+                  }
+                }
+              });
+
+          }
         }
       });
 
+  }
+
+  manipulateData(aggregated: any[], names: any[]): any[] {
+    // Check if both arrays are populated
+    if (aggregated.length > 0 && names.length > 0) {
+      // Loop through the aggregated data
+      aggregated.forEach((genre: any) => {
+        // Loop through the names
+        names.forEach((name: any) => {
+          // Check if the id's match
+          if (genre.genre_id === name.genre_id) {
+            // Add the name to the genre object
+            genre.name = name.name;
+          }
+        });
+      });
+      // Remove duplicates
+      aggregated = aggregated.filter((genre: any, index: any, self: any) =>
+        index === self.findIndex((t: any) => (
+          t.genre_id === genre.genre_id
+        ))
+      );
+      return aggregated;
+    }
+    return [];
   }
 
 }
