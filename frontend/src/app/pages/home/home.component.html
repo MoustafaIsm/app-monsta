@@ -26,7 +26,12 @@
         </div>
     </div>
     <!-- List of genres -->
-    <div class="genre-grid-wrapper">
+    <div class="genre-grid-wrapper" *ngIf="genres.length > 0; else elseBlock">
         <app-genre-card *ngFor="let genre of genres" [genre]="genre"></app-genre-card>
     </div>
+    <ng-template #elseBlock>
+        <div class="loading-wrapper">
+            <fa-icon [icon]="faSpinner" [spin]="true"></fa-icon>
+        </div>
+    </ng-template>
 </section>

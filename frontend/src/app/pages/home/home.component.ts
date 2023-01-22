@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faAndroid, faAppStoreIos } from '@fortawesome/free-brands-svg-icons';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { CountriesService } from '../../services/countries/countries.service';
 import { AppMonstaService } from 'src/app/services/appMonsta/app-monsta.service';
 import { convertStringToArray } from '../../../utilities/functions';
@@ -12,6 +13,7 @@ import { convertStringToArray } from '../../../utilities/functions';
 export class HomeComponent implements OnInit {
   faAndroid = faAndroid;
   faAppStoreIos = faAppStoreIos;
+  faSpinner = faSpinner;
   allCountries: any[] = [];
   store: string = 'itunes';
   country: string = 'US';
@@ -63,8 +65,6 @@ export class HomeComponent implements OnInit {
         error: (error: any) => {
           if (error.status === 200) {
             this.agregatedGenres = convertStringToArray(error.error?.text);
-            console.log(this.agregatedGenres);
-
             // Get specific genre names
             this.appMonstaService.getSpecificGenreNames(this.store, this.date)
               .subscribe({
@@ -74,9 +74,7 @@ export class HomeComponent implements OnInit {
                 error: (error: any) => {
                   if (error.status === 200) {
                     this.spesificGenreNames = convertStringToArray(error.error?.text);
-                    console.log(this.spesificGenreNames);
                     this.genres = this.manipulateData(this.agregatedGenres, this.spesificGenreNames);
-                    console.log(this.genres);
                   }
                 }
               });
