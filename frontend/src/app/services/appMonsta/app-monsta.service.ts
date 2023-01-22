@@ -29,8 +29,13 @@ export class AppMonstaService {
     return result;
   }
 
-  getAppDetails(store: string, appId: string, country: string) {
+  getAppDetails(store: string, appId: string, country: string): Observable<any> {
     const result = this.http.get(`${URL}/${store}/details/${appId}.json?country=${country}`, httpOptions);
+    return result;
+  }
+
+  getPublisherName(store: string, date: string): Observable<any> {
+    const result = this.http.get(`${URL}/${store}/publishers.json?date=${date}`, httpOptions);
     return result;
   }
 }

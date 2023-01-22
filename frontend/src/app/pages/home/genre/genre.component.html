@@ -19,7 +19,8 @@
         <h1>{{genre.name}}</h1>
     </div>
     <!-- List of apps -->
-    <div class="app-grid-wrapper">
-        <app-app-card></app-app-card>
+    <div class="app-grid-wrapper" *ngIf="appDetails.length > 0">
+        <app-app-card [app]="appDetails[0]" [store]="store" [date]="date"></app-app-card>
+        <!-- <app-app-card *ngFor="let app of appDetails" [app]="app"></app-app-card> -->
     </div>
 </section>
