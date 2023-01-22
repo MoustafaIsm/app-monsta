@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AppMonstaService } from 'src/app/services/appMonsta/app-monsta.service';
 import { convertStringToArray } from 'src/utilities/functions';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-app-card',
@@ -12,7 +13,7 @@ export class AppCardComponent implements OnInit {
   @Input() store: string = '';
   @Input() date: string = '';
 
-  constructor(private appMonstaSvice: AppMonstaService) { }
+  constructor(private router: Router, private appMonstaSvice: AppMonstaService) { }
 
   ngOnInit(): void {
     this.getPublisherName(this.app.publisher_id);
@@ -46,6 +47,15 @@ export class AppCardComponent implements OnInit {
         }
       }
     });
+  }
+
+  openAppDetails() {
+    const navigationExtras: NavigationExtras = {
+      state: {
+        app: this.app,
+      }
+    };
+    this.router.navigate(['/home/app'], navigationExtras);
   }
 
 }
