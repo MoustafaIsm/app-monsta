@@ -27,4 +27,9 @@ export class AppMonstaService {
     const result = this.http.get(`https://api.appmonsta.com/v1/stores/${store}/rankings/genres.json?date=${date}`, httpOptions);
     return result;
   }
+
+  getFirstAppOfGenre(store: string, appId: string, country: string) {
+    const result = this.http.get(`https://api.appmonsta.com/v1/stores/${store}/details/${appId}.json?country=${country}`, httpOptions);
+    return result;
+  }
 }

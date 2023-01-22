@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   allCountries: any[] = [];
   store: string = 'itunes';
   country: string = 'US';
-  date: string = new Date('2023-1-20').toISOString().slice(0, 10);
+  date: string = new Date('2023-1-22').toISOString().slice(0, 10);
   genres: any[] = [];
   agregatedGenres: any[] = [];
   spesificGenreNames: any[] = [];
