@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, NavigationExtras } from '@angular/router';
 import { Input } from '@angular/core';
 import { AppMonstaService } from 'src/app/services/appMonsta/app-monsta.service';
 
@@ -10,9 +11,10 @@ import { AppMonstaService } from 'src/app/services/appMonsta/app-monsta.service'
 export class GenreCardComponent implements OnInit {
   @Input() genre: any;
   @Input() store: string = '';
+  @Input() date: string = '';
   pictureURL: string = '/images/placeholder.png';
 
-  constructor(private appMonstaService: AppMonstaService) {
+  constructor(private router: Router, private appMonstaService: AppMonstaService) {
 
   }
 
@@ -20,12 +22,19 @@ export class GenreCardComponent implements OnInit {
     this.appMonstaService.getFirstAppOfGenre(this.store, this.genre.ranks[0], 'US').subscribe({
       next: (data: any) => {
         this.pictureURL = data.screenshot_urls[0];
-        console.log(this.pictureURL);
-      },
-      error: (error: any) => {
-        console.log(error);
       }
     });
+  }
+
+  goToGenre() {
+    const navigationExtras: NavigationExtras = {
+      state: {
+        genre: this.genre,
+        store: this.store,
+        date: this.date
+      }
+    };
+    this.router.navigate(['/home/genre'], navigationExtras);
   }
 
 }

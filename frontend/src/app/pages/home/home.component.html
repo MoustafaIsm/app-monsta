@@ -27,7 +27,7 @@
     </div>
     <!-- List of genres -->
     <div class="genre-grid-wrapper" *ngIf="genres.length > 0; else elseBlock">
-        <app-genre-card *ngFor="let genre of genres" [genre]="genre" [store]="store"></app-genre-card>
+        <app-genre-card *ngFor="let genre of genres" [genre]="genre" [store]="store" [date]="date"></app-genre-card>
     </div>
     <ng-template #elseBlock>
         <div class="loading-wrapper">
