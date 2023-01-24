@@ -12,18 +12,18 @@ export class GenreCardComponent implements OnInit {
   @Input() genre: any;
   @Input() store: string = '';
   @Input() date: string = '';
-  pictureURL: string = '/images/placeholder.png';
+  pictureURL: string = 'assets/images/placeholder.png';
 
   constructor(private router: Router, private appMonstaService: AppMonstaService) {
 
   }
 
   ngOnInit(): void {
-    // this.appMonstaService.getAppDetails(this.store, this.genre.ranks[0], this.genre.country).subscribe({
-    //   next: (data: any) => {
-    //     this.pictureURL = data.screenshot_urls[0];
-    //   }
-    // });
+    this.appMonstaService.getAppDetails(this.store, this.genre.ranks[0], this.genre.country).subscribe({
+      next: (data: any) => {
+        this.pictureURL = data.screenshot_urls[0];
+      }
+    });
   }
 
   goToGenre() {

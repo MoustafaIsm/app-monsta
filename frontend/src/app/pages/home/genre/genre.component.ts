@@ -32,18 +32,12 @@ export class GenreComponent implements OnInit {
   }
 
   getAppsDetails() {
-    // this.genre?.ranks.forEach((item: string) => {
-    //   this.appMonstaService.getAppDetails(this.store, item, this.genre.country).subscribe({
-    //     next: (data: any) => {
-    //       this.appDetails.push(data);
-    //     }
-    //   });
-    // });
-
-    this.appMonstaService.getAppDetails(this.store, this.genre.ranks[0], this.genre.country).subscribe({
-      next: (data: any) => {
-        this.appDetails.push(data);
-      }
+    this.genre?.ranks.forEach((item: string) => {
+      this.appMonstaService.getAppDetails(this.store, item, this.genre.country).subscribe({
+        next: (data: any) => {
+          this.appDetails.push(data);
+        }
+      });
     });
   }
 
