@@ -23,6 +23,9 @@ builder.Services.AddControllersWithViews().AddNewtonsoftJson(options =>
         options.SerializerSettings.ContractResolver = new DefaultContractResolver();
 });
 
+// Httpclient
+builder.Services.AddHttpClient<string>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
