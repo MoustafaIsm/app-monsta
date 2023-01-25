@@ -40,7 +40,7 @@ namespace backend.Controllers
             return result;
         }
 
-        [Route("[action]/getSpecificNames")]
+        [Route("[action]/")]
         [HttpGet]
         public async Task<string> GetSpecificNames (string store, string date)
         {

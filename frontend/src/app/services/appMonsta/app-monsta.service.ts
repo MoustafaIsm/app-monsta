@@ -10,7 +10,7 @@ const httpOptions = {
   })
 };
 
-const URL = 'https://api.appmonsta.com/v1/stores';
+const URL = 'http://localhost:5226/api';
 
 @Injectable({
   providedIn: 'root'
@@ -20,22 +20,22 @@ export class AppMonstaService {
   constructor(private http: HttpClient) { }
 
   getGenres(store: string, country: string, date: string): Observable<any> {
-    const result = this.http.get(`${URL}/${store}/rankings/aggregate.json?country=${country}&date=${date}`, httpOptions);
+    const result = this.http.get(`${URL}/Genre?store=${store}&country=${country}&date=${date}`, httpOptions);
     return result;
   }
 
   getSpecificGenreNames(store: string, date: string): Observable<any> {
-    const result = this.http.get(`${URL}/${store}/rankings/genres.json?date=${date}`, httpOptions);
+    const result = this.http.get(`${URL}/Genre/GetSpecificNames?store=${store}&date=${date}`, httpOptions);
     return result;
   }
 
   getAppDetails(store: string, appId: string, country: string): Observable<any> {
-    const result = this.http.get(`${URL}/${store}/details/${appId}.json?country=${country}`, httpOptions);
+    const result = this.http.get(`${URL}/App?store=${store}&appId=${appId}&country=${country}`, httpOptions);
     return result;
   }
 
   getPublisherName(store: string, date: string): Observable<any> {
-    const result = this.http.get(`${URL}/${store}/publishers.json?date=${date}`, httpOptions);
+    const result = this.http.get(`${URL}/App/getPublishers?store=${store}&date=${date}`, httpOptions);
     return result;
   }
 }

@@ -35,7 +35,7 @@ namespace backend.Controllers
             }
             else
             {
-                result = "No result.";
+                result = "No result";
             }
             return result;
         }

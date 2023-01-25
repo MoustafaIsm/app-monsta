@@ -22,6 +22,9 @@ export class GenreCardComponent implements OnInit {
     this.appMonstaService.getAppDetails(this.store, this.genre.ranks[0], this.genre.country).subscribe({
       next: (data: any) => {
         this.pictureURL = data.screenshot_urls[0];
+      },
+      error: (error: any) => {
+        this.pictureURL = 'assets/images/placeholder.png';
       }
     });
   }
