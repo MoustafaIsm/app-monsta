@@ -60,7 +60,7 @@ export class HomeComponent implements OnInit {
     this.appMonstaService.getGenres(this.store, this.country, this.date)
       .subscribe({
         next: (data: any) => {
-          console.log(data);
+          console.log('data', data);
         },
         error: (error: any) => {
           if (error.status === 200) {
@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit {
             this.appMonstaService.getSpecificGenreNames(this.store, this.date)
               .subscribe({
                 next: (data: any) => {
-                  console.log(data);
+                  console.log('data of names: ', data);
                 },
                 error: (error: any) => {
                   if (error.status === 200) {
@@ -78,7 +78,6 @@ export class HomeComponent implements OnInit {
                   }
                 }
               });
-
           }
         }
       });
